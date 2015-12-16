@@ -8,13 +8,22 @@ class Enigma
     Encryptor.new(message, key, date).encrypt
   end
 
-  def decrypt(message, key, date = Date.today)
-    dec = Decryptor.new(message)
-    dec.decrypt
+  def decrypt(message, key = nil, date = nil)
+    Decryptor.new(message).decrypt
   end
 
   def crack(message)
-    cracker = Crack.new(message)
-    cracker.crack
+    Crack.new(message).crack
+  end
+end
+
+class FileIO
+
+  def file(filename = ARVG[0])
+    File.read(filename)
+  end
+
+  def write_file
+    File.write
   end
 end

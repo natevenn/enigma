@@ -6,7 +6,7 @@ class Encryptor
 
   attr_reader :rotation, :message, :character_map # => nil
 
-  def initialize(message, key = nil, date = nil)
+  def initialize(message, key = 52941, date = nil)
     @message = message
     @rotation = NumberGenerator.new(key, date).rotation
     @character_map = Cipher.new.character_map
@@ -24,14 +24,14 @@ class Encryptor
 
   def rotation_multiplier
     index_message
-    if message.length % 4 == 0
-      m = message.length / 4
+    if index_message.length % 4 == 0
+      m = index_message.length / 4
       rotation * m
-    elsif message.length / 4 == 0
-      r = message.length % 4
+    elsif index_message.length / 4 == 0
+      r = index_message.length % 4
       rotation[0,r]
-    else m = message.length / 4
-      r = message.length % 4
+    else m = index_message.length / 4
+      r = index_message.length % 4
       rotation * m + rotation[0,r]
     end
   end

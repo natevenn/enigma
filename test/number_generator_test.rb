@@ -23,9 +23,9 @@ class KeyGeneratorTest < Minitest::Test
   end
 
   def test_can_add_key_and_offset
-    kg = NumberGenerator.new(nil, 52941)
+    kg = NumberGenerator.new(52941, nil)
 
-    assert_equal [58, 31, 96, 46], kg.rotate
+    assert_equal [58, 31, 96, 46], kg.rotation
   end
 
 

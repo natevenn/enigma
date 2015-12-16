@@ -6,6 +6,20 @@ require 'pry'
 
 class DecryptorTest < Minitest::Test
 
+  def test_message_characters_get_split_in_an_array
+    skip
+    enc = Decryptor.new('093s7')
+
+    assert_equal ['0', '9', '3', 's', '7'], enc.split_msg
+  end
+
+  def test_message_characters_get_downcased
+    skip
+
+    enc = Decryptor.new('093S7')
+
+    assert_equal ['0', '9', '3', 's', '7'], enc.split_msg
+  end
 
   def test_can_index_cipher
 

@@ -1,7 +1,7 @@
 class NumberGenerator
 
 
-  attr_reader :key, :offset, :generate_key, :wheels  # => nil
+  attr_reader :key, :offset, :wheels  # => nil
 
   def initialize(key = 52941, date = nil)
     @offset = generate_offset(date)
@@ -9,7 +9,7 @@ class NumberGenerator
     @wheels = []
   end
 
-  def generate_offset(date)
+  def generate_offset(date = nil)
     if date.nil?
       today = Time.now.strftime('%d%m%y')
       @offset = parse_date(today)

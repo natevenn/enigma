@@ -1,25 +1,24 @@
 require_relative 'encryptor'
 class Decryptor
 
-  attr_accessor :number_generator, :message, :cipher
+  attr_accessor :rotation, :message, :character_map
 
   def initialize(message)
     @message = message
-    @number_generator = NumberGenerator.new(nil, 52941).rotate
-    @cipher = Cipher.new.char_map.reverse
+    @rotation = NumberGenerator.new(52941, nil).rotation
+    @character_map = Cipher.new.character_map.reverse
+  end
+
+  def decrypt
+    decryption_index.map { |i| character_map[i] }.join
   end
 
   def index_message
-    cipher = @cipher
-    split_msg = message.downcase.chars
-    split_msg.map do |char|
-    cipher.index(char)
-    end
+    message.downcase.chars.map { |char| character_map.index(char) }
   end
 
   def rotation_multiplier
-    message = index_message
-    rotation = @number_generator
+    index_message
     if message.length % 4 == 0
       m = message.length / 4
       rotation * m
@@ -39,12 +38,4 @@ class Decryptor
     end
   end
 
-  def decrypt
-    cipher = @cipher
-    index = decryption_index
-    decryption = index.map do |i|
-      cipher[i]
-    end
-      decryption.join
-  end
 end
