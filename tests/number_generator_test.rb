@@ -1,6 +1,6 @@
 require 'Minitest/autorun'
 require 'minitest/pride'
-require_relative 'number_generator'
+require_relative '../lib/number_generator'
 require 'pry'
 class KeyGeneratorTest < Minitest::Test
 
@@ -25,7 +25,7 @@ class KeyGeneratorTest < Minitest::Test
   def test_can_add_key_and_offset
     kg = NumberGenerator.new(nil, 52941)
 
-    assert_equal [58, 31, 96, 46], kg.rotation
+    assert_equal [58, 31, 96, 46], kg.rotate
   end
 
 

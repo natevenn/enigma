@@ -1,0 +1,4 @@
+language: ruby
+scriipt: bundle exec mrspec --color
+rvm:
+  - 2.2.2
