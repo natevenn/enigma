@@ -5,7 +5,7 @@ class Encryptor
 
   attr_reader :rotation, :message, :character_map
 
-  def initialize(message, key = 52941, date = nil)
+  def initialize(message, key = nil, date = nil)
     @message = message
     @rotation = NumberGenerator.new(key, date).rotation
     @character_map = Cipher.new.character_map

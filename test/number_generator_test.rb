@@ -4,13 +4,13 @@ require_relative '../lib/number_generator'
 require 'pry'
 class KeyGeneratorTest < Minitest::Test
 
-  def test_can_return_a_four_digit_number
+  def test_can_return_a_four_digit_input
     kg = NumberGenerator.new
 
     assert_equal ['6', '2', '2', '5'], kg.generate_offset
   end
 
-  def test_can_return_default_date
+  def test_can_return_default_date_with_offset
     kg = NumberGenerator.new
 
     assert_equal ['8', '4', '0', '0'], kg.generate_offset(140780)

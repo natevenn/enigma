@@ -7,7 +7,7 @@ class Crack
 
   attr_reader :number_generator, :message, :character_map
 
-  def initialize(message)
+  def initialize(message, date = nil)
     @message = message
     @number_generator = NumberGenerator.new(nil, 52941).rotation
     @character_map = Cipher.new.character_map

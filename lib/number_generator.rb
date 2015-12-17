@@ -3,7 +3,7 @@ class NumberGenerator
 
   attr_reader :key, :offset, :wheels
 
-  def initialize(key = 52941, date = nil)
+  def initialize(key = nil, date = nil)
     @offset = generate_offset(date)
     @key = generate_key(key)
     @wheels = []
