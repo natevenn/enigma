@@ -1,11 +1,13 @@
-require_relative 'encryptor'
+require_relative 'number_generator'
+require_relative 'cipher'
+
 class Decryptor
 
-  attr_accessor :rotation, :message, :character_map
+  attr_reader :rotation, :message, :character_map
 
-  def initialize(message)
+  def initialize(message, key = 52941, date = nil)
     @message = message
-    @rotation = NumberGenerator.new(52941, nil).rotation
+    @rotation = NumberGenerator.new(key, date).rotation
     @character_map = Cipher.new.character_map.reverse
   end
 

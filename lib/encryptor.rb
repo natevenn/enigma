@@ -1,10 +1,9 @@
-require_relative 'number_generator'  # => true
-require_relative 'cipher'            # => true
-require 'pry'                        # => true
+require_relative 'number_generator'
+require_relative 'cipher'
 
 class Encryptor
 
-  attr_reader :rotation, :message, :character_map # => nil
+  attr_reader :rotation, :message, :character_map
 
   def initialize(message, key = 52941, date = nil)
     @message = message

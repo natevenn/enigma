@@ -1,7 +1,7 @@
 class NumberGenerator
 
 
-  attr_reader :key, :offset, :wheels  # => nil
+  attr_reader :key, :offset, :wheels
 
   def initialize(key = 52941, date = nil)
     @offset = generate_offset(date)
@@ -25,7 +25,7 @@ class NumberGenerator
 
   def generate_key(key)
     if key.nil?
-      @key = rand(99999).to_s.chars
+      @key = rand(99999).to_s.rjust(5, "0").chars
     else
       @key = key.to_s.chars
     end
